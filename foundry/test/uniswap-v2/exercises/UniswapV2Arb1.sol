@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.24;
 
-import {IUniswapV2Pair} from
-    "../../../src/interfaces/uniswap-v2/IUniswapV2Pair.sol";
-import {IUniswapV2Router02} from
-    "../../../src/interfaces/uniswap-v2/IUniswapV2Router02.sol";
+import {
+    IUniswapV2Pair
+} from "../../../src/interfaces/uniswap-v2/IUniswapV2Pair.sol";
+import {
+    IUniswapV2Router02
+} from "../../../src/interfaces/uniswap-v2/IUniswapV2Router02.sol";
 import {IERC20} from "../../../src/interfaces/IERC20.sol";
 
 contract UniswapV2Arb1 {
@@ -42,8 +44,7 @@ contract UniswapV2Arb1 {
      * @param params Swap parameters
      */
     function flashSwap(address pair, bool isToken0, SwapParams calldata params)
-        external
-    {
+        external {
         // Write your code here
         // Don’t change any other code
     }
