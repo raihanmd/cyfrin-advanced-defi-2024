@@ -14,6 +14,10 @@ contract CurveV1SwapTest is Test {
     IERC20 private constant usdc = IERC20(USDC);
     IERC20 private constant usdt = IERC20(USDT);
 
+    int8 private constant DAI_INDEX = 0;
+    int8 private constant USDC_INDEX = 1;
+    int8 private constant USDT_INDEX = 2;
+
     function setUp() public {
         deal(DAI, address(this), 1e6 * 1e18);
         dai.approve(address(pool), type(uint256).max);
@@ -25,9 +29,11 @@ contract CurveV1SwapTest is Test {
     function test_get_dy_underlying() public {
         // Calculate swap from DAI to USDC
         // Write your code here
-        uint256 dy = 0;
+        uint256 dy = pool.get_dy_underlying(
+            int128(DAI_INDEX), int128(USDC_INDEX), 1_000_000e18
+        );
 
-        console2.log("dy %e", dy);
+        console2.log("dy ", dy);
         assertGt(dy, 0, "dy = 0");
     }
 
@@ -36,6 +42,7 @@ contract CurveV1SwapTest is Test {
     function test_exchange() public {
         // Swap DAI to USDC
         // Write your code here
+        pool.exchange(int128(DAI_INDEX), int128(USDC_INDEX), 1_000_000e18, 0);
 
         uint256 bal = usdc.balanceOf(address(this));
         console2.log("USDC balance %e", bal);
