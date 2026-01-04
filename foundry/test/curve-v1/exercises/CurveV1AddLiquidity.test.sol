@@ -32,6 +32,11 @@ contract CurveV1AddLiquidityTest is Test {
     function test_add_liquidity() public {
         // Write your code here
 
+        uint256[3] memory amounts =
+            [uint256(1_000_000) * 1e18, uint256(0), uint256(0)];
+
+        pool.add_liquidity(amounts, 0);
+
         uint256 lpBal = lp.balanceOf(address(this));
         assertGt(lpBal, 0);
     }

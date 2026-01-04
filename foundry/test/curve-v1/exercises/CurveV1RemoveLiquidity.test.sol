@@ -42,6 +42,10 @@ contract CurveV1RemoveLiquidityTest is Test {
 
         // Write your code here
 
+        pool.remove_liquidity(
+            lp.balanceOf(address(this)), [uint256(0), uint256(0), uint256(0)]
+        );
+
         uint256[3] memory balsAfter = [
             dai.balanceOf(address(this)),
             usdc.balanceOf(address(this)),
@@ -73,7 +77,7 @@ contract CurveV1RemoveLiquidityTest is Test {
             usdt.balanceOf(address(this))
         ];
 
-        // Write your code here
+        pool.remove_liquidity_one_coin(lp.balanceOf(address(this)), 0, 0);
 
         uint256[3] memory balsAfter = [
             dai.balanceOf(address(this)),
